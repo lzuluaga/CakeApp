@@ -13,4 +13,20 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+    <style name="MyCustomTab" parent="Widget.Design.TabLayout">
+        <item name="tabBackground"> @color/white </item>
+        <item name="tabIndicator">@null</item>
+        <item name="tabSelectedTextColor">@color/cardview_dark_background</item>
+        <item name="tabTextAppearance">@style/CustomTabTextAppearance</item>
+    </style>
+
+    <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">@color/cardview_dark_background</item>
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">sans-serif-smallcaps</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
