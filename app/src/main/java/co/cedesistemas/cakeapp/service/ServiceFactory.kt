@@ -1,5 +1,6 @@
 package co.cedesistemas.cakeapp.service
 
+import co.cedesistemas.cakeapp.utils.URL
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Converter
@@ -9,7 +10,6 @@ import java.util.concurrent.TimeUnit
 
 class ServiceFactory {
 
-    private val URL = "https://cake-app-cede.herokuapp.com/"
     private var restAdapter: Retrofit? = null
 
     fun serviceImplementation(){

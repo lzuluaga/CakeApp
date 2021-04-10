@@ -11,5 +11,6 @@ data class ProductResponse(
     val score: Int,
     @SerializedName("delivery_time")
     val deliveryTime: Int,
-    val category: Int
+    val category: Int,
+    val name: String
 )
