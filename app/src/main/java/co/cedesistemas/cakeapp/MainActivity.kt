@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         val tabsAdapter = TabsAdapter(supportFragmentManager)
         tabsAdapter.addFragments(LoginFragment(), "Login")
-        tabsAdapter.addFragments(SingUpFragment(), "SingUp")
+        tabsAdapter.addFragments(SignUpFragment(), "SingUp")
         binding.viewPager.adapter = tabsAdapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
         
