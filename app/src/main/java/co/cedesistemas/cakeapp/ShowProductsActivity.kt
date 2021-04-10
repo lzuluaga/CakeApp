@@ -20,7 +20,6 @@ class ShowProductsActivity : AppCompatActivity() {
         binding = ActivityShowProductsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 val products = withContext(Dispatchers.Default){

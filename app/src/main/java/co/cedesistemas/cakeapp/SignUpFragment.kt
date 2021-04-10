@@ -1,5 +1,6 @@
 package co.cedesistemas.cakeapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -45,6 +46,7 @@ class SignUpFragment : Fragment() {
                     }
 
                     Toast.makeText(this@SignUpFragment.context, responseSignUp.token, Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this@SignUpFragment.context, ShowProductsActivity::class.java))
 
                 } catch (exception: Exception) {
                     Toast.makeText(this@SignUpFragment.context, "${exception.message}", Toast.LENGTH_SHORT).show()
