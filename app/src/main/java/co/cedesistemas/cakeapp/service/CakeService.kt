@@ -2,9 +2,11 @@ package co.cedesistemas.cakeapp.service
 
 import co.cedesistemas.cakeapp.models.LoginModel
 import co.cedesistemas.cakeapp.models.LoginResponseModel
+import co.cedesistemas.cakeapp.models.ProductResponse
 import co.cedesistemas.cakeapp.models.SignUpModel
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface CakeService {
@@ -14,4 +16,8 @@ interface CakeService {
 
     @POST("users/signup")
     suspend fun signUp(@Body signUpModel: SignUpModel) : Response<LoginResponseModel>
+
+    @GET("products")
+    suspend fun getAllProducts() : Response<List<ProductResponse>>
+
 }

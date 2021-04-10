@@ -2,6 +2,7 @@ package co.cedesistemas.cakeapp
 
 import co.cedesistemas.cakeapp.models.LoginModel
 import co.cedesistemas.cakeapp.models.LoginResponseModel
+import co.cedesistemas.cakeapp.models.ProductResponse
 import co.cedesistemas.cakeapp.models.SignUpModel
 import co.cedesistemas.cakeapp.service.CakeService
 import co.cedesistemas.cakeapp.service.ServiceFactory
@@ -26,6 +27,15 @@ class CakeRepository {
 
     suspend fun signUp(signUpModel: SignUpModel): LoginResponseModel {
         val response = cakeService.signUp(signUpModel)
+        if (response.isSuccessful){
+            return response.body()!!
+        }else{
+            throw Exception(response.message())
+        }
+    }
+
+    suspend fun getAllProducts(): List<ProductResponse> {
+        val response = cakeService.getAllProducts()
         if (response.isSuccessful){
             return response.body()!!
         }else{

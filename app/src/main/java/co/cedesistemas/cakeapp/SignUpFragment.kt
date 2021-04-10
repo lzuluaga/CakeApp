@@ -30,6 +30,7 @@ class SignUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonsignUp.setOnClickListener {
+
             CoroutineScope(Dispatchers.Main).launch {
                 try {
                     val responseSignUp = withContext(Dispatchers.Default) {
