@@ -1,5 +1,6 @@
 package co.cedesistemas.cakeapp
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import co.cedesistemas.cakeapp.databinding.ItemProductBinding
 import co.cedesistemas.cakeapp.models.ProductResponse
 import co.cedesistemas.cakeapp.utils.URL
 import com.bumptech.glide.Glide
+
 
 class ProductsAdapter(val listProducts: List<ProductResponse>) : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
 
@@ -30,12 +32,15 @@ class ProductsAdapter(val listProducts: List<ProductResponse>) : RecyclerView.Ad
     }
 
 
-    inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
         fun bindItem(product: ProductResponse) {
             binding.textViewItem.text = product.name
             val url = "$URL${product.image}"
             Glide.with(itemView.context).load(url).into(binding.imageViewItem)
+            itemView.setOnClickListener {
+                view.context.startActivity(Intent(view.context, DetailProductActivity::class.java))
+            }
         }
 
     }
