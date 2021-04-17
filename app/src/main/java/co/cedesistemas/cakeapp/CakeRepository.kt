@@ -42,4 +42,9 @@ class CakeRepository {
             throw Exception(response.message())
         }
     }
+
+    suspend fun autoLogin(token: String) : Boolean {
+        val response = cakeService.autoLogin("Bearer $token")
+        return response.isSuccessful
+    }
 }

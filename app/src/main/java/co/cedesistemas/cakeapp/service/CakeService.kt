@@ -7,6 +7,7 @@ import co.cedesistemas.cakeapp.models.SignUpModel
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface CakeService {
@@ -19,5 +20,8 @@ interface CakeService {
 
     @GET("products")
     suspend fun getAllProducts() : Response<List<ProductResponse>>
+
+    @POST("users/autologin")
+    suspend fun autoLogin(@Header("Authorization") token: String) : Response<Unit>
 
 }
