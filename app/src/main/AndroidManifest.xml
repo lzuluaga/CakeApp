@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CakeApp">
-        <activity android:name=".DetailProductActivity"></activity>
+        <activity android:name=".SplashActivity"></activity>
+        <activity android:name=".DetailProductActivity" />
         <activity android:name=".ShowProductsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
