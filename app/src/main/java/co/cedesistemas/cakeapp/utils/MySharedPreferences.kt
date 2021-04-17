@@ -21,4 +21,8 @@ class MySharedPreferences(context: Context) {
         }else null
     }
 
+    fun deleteString(key: String){
+        sharedPreferences!!.edit().remove(key).apply()
+    }
+
 }
