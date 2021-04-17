@@ -9,6 +9,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface CakeService {
 
@@ -23,5 +24,8 @@ interface CakeService {
 
     @POST("users/autologin")
     suspend fun autoLogin(@Header("Authorization") token: String) : Response<Unit>
+
+    @GET("products")
+    suspend fun getDrinks(@Query("category")category: Int) : Response<List<ProductResponse>>
 
 }

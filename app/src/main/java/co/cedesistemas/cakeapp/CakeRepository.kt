@@ -47,4 +47,14 @@ class CakeRepository {
         val response = cakeService.autoLogin("Bearer $token")
         return response.isSuccessful
     }
+
+
+    suspend fun getDrinks(category: Int): List<ProductResponse> {
+        val response = cakeService.getDrinks(category)
+        if (response.isSuccessful){
+            return response.body()!!
+        }else{
+            throw Exception(response.message())
+        }
+    }
 }
