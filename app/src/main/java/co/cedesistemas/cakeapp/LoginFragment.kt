@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import co.cedesistemas.cakeapp.databinding.FragmentLoginBinding
 import co.cedesistemas.cakeapp.models.LoginModel
+import co.cedesistemas.cakeapp.utils.MySharedPreferences
+import co.cedesistemas.cakeapp.utils.TOKEN
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,6 +21,7 @@ import java.lang.Exception
 class LoginFragment : Fragment() {
     
     private lateinit var binding: FragmentLoginBinding
+    private lateinit var myPreferences: MySharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +34,9 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        myPreferences = MySharedPreferences(this.context!!)
+
         binding.button.setOnClickListener { 
             CoroutineScope(Dispatchers.Main).launch {
                 try {
@@ -38,7 +44,7 @@ class LoginFragment : Fragment() {
                         val cakeRepository = CakeRepository()
                         cakeRepository.login(LoginModel(binding.editTextEmail.text.toString(),binding.editTextPassword.text.toString()))
                     }
-                    Toast.makeText(this@LoginFragment.context, responseLogin.token, Toast.LENGTH_SHORT).show()
+                    myPreferences.addString(TOKEN, responseLogin.token)
                     startActivity(Intent(this@LoginFragment.context, ShowProductsActivity::class.java))
                 }catch (e: Exception){
                     Toast.makeText(this@LoginFragment.context, "${e.message}", Toast.LENGTH_SHORT).show()

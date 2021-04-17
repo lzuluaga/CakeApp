@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import co.cedesistemas.cakeapp.databinding.FragmentSignUpBinding
 import co.cedesistemas.cakeapp.models.SignUpModel
+import co.cedesistemas.cakeapp.utils.MySharedPreferences
+import co.cedesistemas.cakeapp.utils.TOKEN
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,7 +20,7 @@ import java.lang.Exception
 class SignUpFragment : Fragment() {
 
     private lateinit var binding: FragmentSignUpBinding
-
+    private lateinit var myPreferences: MySharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +32,9 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        myPreferences = MySharedPreferences(this.context!!)
+
         binding.buttonsignUp.setOnClickListener {
 
             CoroutineScope(Dispatchers.Main).launch {
@@ -45,7 +50,7 @@ class SignUpFragment : Fragment() {
                         )
                     }
 
-                    Toast.makeText(this@SignUpFragment.context, responseSignUp.token, Toast.LENGTH_SHORT).show()
+                    myPreferences.addString(TOKEN, responseSignUp.token)
                     startActivity(Intent(this@SignUpFragment.context, ShowProductsActivity::class.java))
 
                 } catch (exception: Exception) {
