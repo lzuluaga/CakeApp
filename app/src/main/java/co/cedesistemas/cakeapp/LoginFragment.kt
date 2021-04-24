@@ -46,6 +46,7 @@ class LoginFragment : Fragment() {
                     }
                     myPreferences.addString(TOKEN, responseLogin.token)
                     startActivity(Intent(this@LoginFragment.context, ShowProductsActivity::class.java))
+                    activity?.finish()
                 }catch (e: Exception){
                     Toast.makeText(this@LoginFragment.context, "${e.message}", Toast.LENGTH_SHORT).show()
                 }

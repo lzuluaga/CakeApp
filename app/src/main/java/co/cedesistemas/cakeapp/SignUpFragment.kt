@@ -52,7 +52,7 @@ class SignUpFragment : Fragment() {
 
                     myPreferences.addString(TOKEN, responseSignUp.token)
                     startActivity(Intent(this@SignUpFragment.context, ShowProductsActivity::class.java))
-
+                    activity?.finish()
                 } catch (exception: Exception) {
                     Toast.makeText(this@SignUpFragment.context, "${exception.message}", Toast.LENGTH_SHORT).show()
                 }

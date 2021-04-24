@@ -29,6 +29,7 @@ class SplashActivity : AppCompatActivity() {
             autoLogin(token)
         }else{
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 
@@ -41,13 +42,16 @@ class SplashActivity : AppCompatActivity() {
                 }
                 if (response){
                     startActivity(Intent(this@SplashActivity, ShowProductsActivity::class.java))
+                    finish()
                 }else{
                     startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                    finish()
                 }
 
             }catch (e: Exception){
                 Toast.makeText(this@SplashActivity, "${e.message}", Toast.LENGTH_LONG).show()
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                finish()
             }
         }
     }
