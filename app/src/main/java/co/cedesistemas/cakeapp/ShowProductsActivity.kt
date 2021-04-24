@@ -26,7 +26,7 @@ class ShowProductsActivity : AppCompatActivity(), ListenerProduct {
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 val products = withContext(Dispatchers.Default){
-                    val cakeRepository = CakeRepository()
+                    val cakeRepository = CakeRepository(this@ShowProductsActivity)
                     cakeRepository.getAllProducts()
                 }
 

@@ -1,5 +1,7 @@
 package co.cedesistemas.cakeapp.service
 
+import android.content.Context
+import co.cedesistemas.cakeapp.utils.ConnectionInterceptor
 import co.cedesistemas.cakeapp.utils.URL
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -12,8 +14,9 @@ class ServiceFactory {
 
     private var restAdapter: Retrofit? = null
 
-    fun serviceImplementation(){
+    fun serviceImplementation(context: Context){
         val okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(ConnectionInterceptor(context))
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS )
             .readTimeout(10, TimeUnit.SECONDS)
@@ -30,8 +33,8 @@ class ServiceFactory {
         return GsonConverterFactory.create(gson)
     }
 
-    fun getInstanceCakeService(): CakeService{
-        serviceImplementation()
+    fun getInstanceCakeService(context: Context): CakeService{
+        serviceImplementation(context)
         return restAdapter!!.create(CakeService::class.java)
     }
     

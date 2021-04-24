@@ -1,5 +1,6 @@
 package co.cedesistemas.cakeapp
 
+import android.content.Context
 import co.cedesistemas.cakeapp.models.LoginModel
 import co.cedesistemas.cakeapp.models.LoginResponseModel
 import co.cedesistemas.cakeapp.models.ProductResponse
@@ -7,13 +8,13 @@ import co.cedesistemas.cakeapp.models.SignUpModel
 import co.cedesistemas.cakeapp.service.CakeService
 import co.cedesistemas.cakeapp.service.ServiceFactory
 
-class CakeRepository {
+class CakeRepository(val context: Context) {
     
     private var cakeService: CakeService
     
     init {
         val serviceFactory = ServiceFactory()
-        cakeService = serviceFactory.getInstanceCakeService()
+        cakeService = serviceFactory.getInstanceCakeService(context)
     }
 
     suspend fun login(loginModel: LoginModel): LoginResponseModel {

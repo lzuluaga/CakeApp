@@ -40,7 +40,7 @@ class SignUpFragment : Fragment() {
             CoroutineScope(Dispatchers.Main).launch {
                 try {
                     val responseSignUp = withContext(Dispatchers.Default) {
-                        val cakeRepository = CakeRepository()
+                        val cakeRepository = CakeRepository(this@SignUpFragment.context!!)
                         cakeRepository.signUp(
                             SignUpModel(
                                 binding.editTextName.text.toString(),

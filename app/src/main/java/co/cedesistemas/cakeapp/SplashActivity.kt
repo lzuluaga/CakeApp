@@ -37,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 val response = withContext(Dispatchers.Default){
-                    val cakeRepository = CakeRepository()
+                    val cakeRepository = CakeRepository(this@SplashActivity)
                     cakeRepository.autoLogin(token)
                 }
                 if (response){

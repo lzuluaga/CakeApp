@@ -41,7 +41,7 @@ class LoginFragment : Fragment() {
             CoroutineScope(Dispatchers.Main).launch {
                 try {
                     val responseLogin = withContext(Dispatchers.Default){
-                        val cakeRepository = CakeRepository()
+                        val cakeRepository = CakeRepository(this@LoginFragment.context!!)
                         cakeRepository.login(LoginModel(binding.editTextEmail.text.toString(),binding.editTextPassword.text.toString()))
                     }
                     myPreferences.addString(TOKEN, responseLogin.token)
