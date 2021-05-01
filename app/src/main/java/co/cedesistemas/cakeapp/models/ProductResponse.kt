@@ -1,5 +1,6 @@
 package co.cedesistemas.cakeapp.models
 
+import android.graphics.Bitmap
 import com.google.gson.annotations.SerializedName
 
 data class ProductResponse(
@@ -12,5 +13,6 @@ data class ProductResponse(
     @SerializedName("delivery_time")
     val deliveryTime: Int,
     val category: Int,
-    val name: String
+    val name: String,
+    val bitmap: Bitmap? = null
 )
