@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
+import java.net.ConnectException
 
 class SplashActivity : AppCompatActivity() {
 
@@ -49,9 +50,13 @@ class SplashActivity : AppCompatActivity() {
                 }
 
             }catch (e: Exception){
-                Toast.makeText(this@SplashActivity, "${e.message}", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                finish()
+                if (e is ConnectException){
+                    startActivity(Intent(this@SplashActivity, ShowProductsActivity::class.java))
+                }else{
+                    Toast.makeText(this@SplashActivity, "${e.message}", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                    finish()
+                }
             }
         }
     }

@@ -36,7 +36,10 @@ class ProductsAdapter(val listProducts: List<ProductResponse>, val listener: Lis
         fun bindItem(product: ProductResponse) {
             itemProductBinding.textViewItem.text = product.name
             val url = "$URL${product.image}"
-            Glide.with(itemProductBinding.root.context).load(url).into(itemProductBinding.imageViewItem)
+            product.bitmap?.let {
+                itemProductBinding.imageViewItem.setImageBitmap(it)
+            } ?: Glide.with(itemProductBinding.root.context).load(url).into(itemProductBinding.imageViewItem)
+
             itemProductBinding.root.setOnClickListener {
                 // Forma 1, no es muy correcta
               //  itemProductBinding.root.context.startActivity(Intent(itemProductBinding.root.context, DetailProductActivity::class.java))

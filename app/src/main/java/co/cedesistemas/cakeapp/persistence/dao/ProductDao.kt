@@ -15,5 +15,8 @@ interface ProductDao {
     @Query("SELECT * FROM product")
     fun getAllProducts():List<ProductEntity>
 
+    @Query("SELECT * FROM product WHERE category = :id ")
+    fun getProductsById(id: Int):List<ProductEntity>
+
 
 }
